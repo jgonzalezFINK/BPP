@@ -8,6 +8,8 @@ const DetallePro = () =>{
     
     React.useEffect(()=>{
       obtenerDatos(id)
+      console.log(Object.values(id));
+      console.log(id);
     },[id])      
 
     const obtenerDatos = async (id) =>{
@@ -20,8 +22,14 @@ const DetallePro = () =>{
                 headers: myHeaders,
                 redirect: 'follow'
               };
-              
-                const lista = await fetch(`https://kevarman20.herokuapp.com/v2/productos/${id}`, requestOptions)
+              for (var key in id) {
+                var id_url = id[key];
+                //console.log(key);
+                //console.log(id[key]);
+              }
+                const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                const lista = await fetch(proxyurl + `https://kevarman20.herokuapp.com/v2/productos/${id_url}`, requestOptions)
+                //const lista = await fetch(`https://kevarman20.herokuapp.com/v2/productos/${id_url}`, requestOptions)
                 const productolis = await lista.json()
                 setproducto(productolis)
 
@@ -32,7 +40,7 @@ const DetallePro = () =>{
 
     return (
         <Fragment>
-            <h1>Hola :D</h1>
+            <h1>{JSON.stringify(id)}</h1>
         </Fragment>
     )
 }
