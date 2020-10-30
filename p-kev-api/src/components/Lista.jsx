@@ -43,6 +43,7 @@ const Lista = () =>{
             ))
             }
           </ul>
+          <Link href="" to={`/Newproductos/`} className="btn btn-dark">AddProduc</Link>
         </Fragment>
     )
 

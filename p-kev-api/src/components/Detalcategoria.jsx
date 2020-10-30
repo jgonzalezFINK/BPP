@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import {useParams} from 'react-router-dom'
 
-const DetallePro = () =>{
+function DetallesCategoria() {
 
     const {id} = useParams()
-    const[producto,setproducto]= React.useState([]) 
+    const[categoria,setcategoria]= React.useState([]) 
     
     React.useEffect(()=>{
       obtenerDatos(id)
@@ -23,27 +23,23 @@ const DetallePro = () =>{
               };
               for (var key in id) {
                 var id_url = id[key];
-                //console.log(key);
-                //console.log(id[key]);
               }
                 const proxyurl = "https://cors-anywhere.herokuapp.com/";
-                const lista = await fetch(proxyurl + `https://kevarman20.herokuapp.com/v2/productos/${id_url}`, requestOptions)
-                //const lista = await fetch(`https://kevarman20.herokuapp.com/v2/productos/${id_url}`, requestOptions)
-                const productolis = await lista.json()
-                setproducto(productolis)
+                const lista = await fetch(proxyurl + `https://kevarman20.herokuapp.com/v1/categorias/${id_url}`, requestOptions)
+                //const lista = await fetch(`https://kevarman20.herokuapp.com/v2/categorias/${id_url}`, requestOptions)
+                const categorialis = await lista.json()
+                setcategoria(categorialis)
 
               } catch (error) {
-                console.log('no tenemos productos')
+                console.log('no tenemos categorias')
               }
       }
 
     return (
         <Fragment>
-            <h1>Producto {JSON.stringify(id)}</h1>
-            <h1>{producto.descripcion}</h1>
-            <h1>Subcategoria: {producto.subcategoria}</h1>
+            <h1>categoria {JSON.stringify(id)}</h1>
+            <h1>{categoria.descripcion}</h1>
         </Fragment>
     )
 }
-
-export default DetallePro
+export default DetallesCategoria
