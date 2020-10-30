@@ -1,16 +1,15 @@
 import React, { Fragment,} from 'react'
 import { useForm } from 'react-hook-form'
+import { Route } from 'react-router-dom';
 
 import "../styles.css"
 
 const AddUsuario=()=>{
 
     const [datos,setdatos]=React.useState({
-        
             username:"",
             email:"",
-            password:""
-        
+            password:""      
     });
 
     var myHeaders = new Headers();

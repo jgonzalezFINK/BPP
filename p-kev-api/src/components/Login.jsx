@@ -1,21 +1,17 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import { useForm } from 'react-hook-form'
+import Lista from './Lista'
+import {Link} from "react-router-dom";
 import "../styles.css"
 
 const Login = () => {
 
-    const[datos,setdatos]= React.useState({
-        username:'',
-        password:''
-    });    
-
-    const [Token,setToken] = React.useState({authToken:''});
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    const [Token,setToken]= React.useState('')
     
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");  
+  
     const onSubmit = (data, e) =>{
-        setdatos([datos,data])
         var raw = JSON.stringify({"username":data.username,"password":data.password});
         var requestOptions = {
             method: 'POST',
@@ -29,19 +25,23 @@ const Login = () => {
     
     const obtenerDatos = async (requestOptions) =>{
         try {
+
             const data = await fetch("https://kevarman20.herokuapp.com/login/",requestOptions)
-            const miToken = await data.json()         
+            let miToken = await data.json()
             setToken(miToken)
+            localStorage.setItem("Token", JSON.stringify(miToken))
+    
         } catch (error) {
-            console.log('no hay token')
+            console.log(error)
         }
     }
-
+    
     const{register,errors,handleSubmit} = useForm();
-   
     
         return(
             <Fragment>
+                { Token ? 
+                    <Lista />  :<>
                 <h1>Login</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <label>Username</label>
@@ -67,8 +67,11 @@ const Login = () => {
                         }
                         />
                         <p>{errors?.password?.message}</p>  
+                        <Link to={`/AddUsuario`}>Registrar Usuario</Link>
                         <button className="btn btn-primary">lOGIN</button>
                     </form>
+                    </> 
+                    }
             </Fragment>
             )
 }

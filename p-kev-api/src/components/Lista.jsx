@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import "../styles.css"
 
 const Lista = () =>{
-
+    
+    const Token= localStorage.getItem("Token")
     const[productos,setproductos]= React.useState([]) 
     
     React.useEffect(()=>{
       const obtenerDatos = async () =>{
         try {
               var myHeaders = new Headers();
-              myHeaders.append("Authorization", "Token 18e59323d194db38c608b4d2903443dd997a5588");
+              myHeaders.append("Authorization",Token);
               
               var requestOptions = {
                 method: 'GET',
@@ -27,7 +28,7 @@ const Lista = () =>{
               }
       }
       obtenerDatos()
-    },[])      
+    },[Token])      
 
     return(
         <Fragment>
