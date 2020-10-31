@@ -1,13 +1,9 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import Lista from './Lista'
 import {Link} from "react-router-dom";
 import "../styles.css"
 
 const Login = () => {
-
-    const [Token,setToken]= React.useState('')
-    
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");  
   
@@ -28,23 +24,26 @@ const Login = () => {
 
             const data = await fetch("https://kevarman20.herokuapp.com/login/",requestOptions)
             let miToken = await data.json()
-            setToken(miToken)
-            localStorage.setItem("Token", JSON.stringify(miToken))
-    
+            
+            if(miToken.error){
+                alert(miToken.error)
+            }else{
+                localStorage.setItem("Token", JSON.stringify(miToken))
+            }
         } catch (error) {
             console.log(error)
         }
+
     }
-    
+
     const{register,errors,handleSubmit} = useForm();
-    
+
         return(
             <Fragment>
-                { Token ? 
-                    <Lista />  :<>
                 <h1>Login</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                    <label>Username</label>
+                        <div>
+                        <label>Username</label>
                         <input
                         name="username"
                         className="form-control my-2 "
@@ -55,8 +54,9 @@ const Login = () => {
                         }
                         />
                         <p>{errors?.username?.message}</p>
-                        
-                    <label>Password</label>
+                        </div>
+                        <div>
+                        <label>Password</label>
                         <input
                         name="password"
                         className="form-control my-2 "
@@ -66,14 +66,16 @@ const Login = () => {
                             })
                         }
                         />
-                        <p>{errors?.password?.message}</p>  
-                        <Link to={`/AddUsuario`}>Registrar Usuario</Link>
+                        <p>{errors?.password?.message}</p>
+                        </div>
+                        <div>
+                        <Link to="/Usuario/AddUsuario" >Registrar Usuario</Link>
+                        </div>
                         <button className="btn btn-primary">lOGIN</button>
                     </form>
-                    </> 
-                    }
-            </Fragment>
+             </Fragment>
             )
+          
 }
 
 export default Login

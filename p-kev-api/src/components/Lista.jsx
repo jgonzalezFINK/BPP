@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import "../styles.css"
 
 const Lista = () =>{
@@ -44,7 +44,10 @@ const Lista = () =>{
             ))
             }
           </ul>
-          <Link href="" to={`/Newproductos/`} className="btn btn-dark">AddProduc</Link>
+          <Redirect push to="/AddUsuario">
+          <button className="btn btn-primary" >Agregar producto</button>
+          </Redirect>
+
         </Fragment>
     )
 

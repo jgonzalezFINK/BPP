@@ -1,7 +1,5 @@
 import React, { Fragment,} from 'react'
 import { useForm } from 'react-hook-form'
-import { Route } from 'react-router-dom';
-
 import "../styles.css"
 
 const AddUsuario=()=>{
