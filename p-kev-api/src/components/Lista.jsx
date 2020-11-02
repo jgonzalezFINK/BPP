@@ -1,25 +1,17 @@
-import React, { Fragment } from 'react'
-import { Link, Redirect } from 'react-router-dom';
+import React, { Fragment, useEffect,useState} from 'react'
+import { Link} from 'react-router-dom';
 import "../styles.css"
+import Botones from './Botones';
 
 const Lista = () =>{
     
     const Token= localStorage.getItem("Token")
-    const[productos,setproductos]= React.useState([]) 
+    const[productos,setproductos]= useState([]) 
     
-    React.useEffect(()=>{
+    useEffect(()=>{
       const obtenerDatos = async () =>{
         try {
-              var myHeaders = new Headers();
-              myHeaders.append("Authorization",Token);
-              
-              var requestOptions = {
-                method: 'GET',
-                headers: myHeaders,
-                redirect: 'follow'
-              };
-  
-                const lista = await fetch("https://kevarman20.herokuapp.com/v2/productos/", requestOptions)
+                const lista = await fetch("https://kevarman20.herokuapp.com/v2/productos/")
                 const productolis = await lista.json()
                 setproductos(productolis)
               
@@ -32,6 +24,7 @@ const Lista = () =>{
 
     return(
         <Fragment>
+          <Botones/>
             <h1>Productos</h1>
           <ul>
             {
@@ -44,9 +37,8 @@ const Lista = () =>{
             ))
             }
           </ul>
-          <Redirect push to="/AddUsuario">
-          <button className="btn btn-primary" >Agregar producto</button>
-          </Redirect>
+         <button className="btn btn-primary" >Agregar producto</button>
+         
 
         </Fragment>
     )

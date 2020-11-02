@@ -1,14 +1,13 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
-
+import Botones from './Botones';
 const DetallePro = () =>{
 
     const {id} = useParams()
-    const[producto,setproducto]= React.useState([]) 
+    const[producto,setproducto]= useState([]) 
     
-    React.useEffect(()=>{
+    useEffect(()=>{
       obtenerDatos(id)
-
     },[id])      
 
 
@@ -24,9 +23,9 @@ const DetallePro = () =>{
 
     return (
         <Fragment>
-            <h1>Producto {JSON.stringify(id)}</h1>
+           <Botones/>
             <h1>{producto.descripcion}</h1>
-            <h1>Subcategoria: {producto.subcategoria}</h1>
+            <label>Subcategoria: {producto.subcategoria}</label>
         </Fragment>
     )
 }

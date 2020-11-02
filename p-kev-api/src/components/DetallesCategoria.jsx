@@ -1,32 +1,39 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect,useState } from 'react'
 import {useParams} from 'react-router-dom'
-
+import Botones from './Botones';
 function DetallesCategoria() {
 
     const id = useParams().id
-    const[categoria,setcategoria]= React.useState([]) 
+    const[categoria,setcategoria]= useState([]) 
     
-    React.useEffect(()=>{
+    useEffect(()=>{
+      const obtenerDatos = async (id) =>{
+        try {   
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", "Token 18e59323d194db38c608b4d2903443dd997a5588");
+              
+            var requestOptions = {
+              mode :'no-cors',
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow'
+            };
+            
+            const lista = await fetch(`https://kevarman20.herokuapp.com/v2/categorias/${id}`, requestOptions)
+            const categorialis = await lista.json()
+            setcategoria(categorialis)
+            } catch (error) {
+              console.log(error)
+            }
+      } 
       obtenerDatos(id)
     },[id])      
 
-    const obtenerDatos = async (id) =>{
-        try {
-              
-               
-                const lista = await fetch(`https://kevarman20.herokuapp.com/v1/categorias/${id}`)
-                const categorialis = await lista.json()
-                setcategoria(categorialis)
-
-              } catch (error) {
-                console.log('no tenemos categorias')
-              }
-      }
-
     return (
         <Fragment>
-            <h1>categoria {JSON.stringify(id)}</h1>
-            <h1>{categoria.descripcion}</h1>
+           <Botones/>
+            <h1>{categoria.id}</h1>
+            <label>{categoria.descripcion}</label>
         </Fragment>
     )
 }

@@ -1,14 +1,8 @@
 import React, { Fragment,} from 'react'
 import { useForm } from 'react-hook-form'
 import "../styles.css"
-
+import Botones from './Botones';
 const AddUsuario=()=>{
-
-    const [datos,setdatos]=React.useState({
-            username:"",
-            email:"",
-            password:""      
-    });
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -26,19 +20,18 @@ const AddUsuario=()=>{
         redirect: 'follow'
         };
 
-fetch("https://kevarman20.herokuapp.com/crear/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-        setdatos(data)
-        console.log(data.email);
-        e.target.reset()
+        fetch("https://kevarman20.herokuapp.com/crear/", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+        
     }
 
 
     const {register, errors, handleSubmit} = useForm();
     return(
         <Fragment>
+             <Botones/>
              <h1> AddUsuario  </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
             <label>Username</label>

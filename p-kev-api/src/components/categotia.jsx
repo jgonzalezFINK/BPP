@@ -1,12 +1,13 @@
-import React, { Fragment }from 'react';
+import React, { Fragment,useEffect,useState }from 'react';
 import { Link } from 'react-router-dom';
 import "../styles.css"
+import Botones from './Botones';
 
 const LisCategotia = () => {
 
-    const[categoria,setCategoria]= React.useState([]) 
+    const[categoria,setCategoria]= useState([]) 
     
-    React.useEffect(()=>{
+    useEffect(()=>{
       const obtenerDatos = async () =>{
         try {
               var myHeaders = new Headers();
@@ -32,6 +33,7 @@ const LisCategotia = () => {
 
     return (
         <Fragment>
+          <Botones/>
         <h1>Categorias</h1>
       <ul>
         {
