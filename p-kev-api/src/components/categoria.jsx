@@ -1,7 +1,6 @@
 import React, { Fragment,useEffect,useState }from 'react';
 import { Link } from 'react-router-dom';
 import "../styles.css"
-import Botones from './Botones';
 
 const LisCategotia = () => {
 
@@ -33,7 +32,6 @@ const LisCategotia = () => {
 
     return (
         <Fragment>
-          <Botones/>
         <h1>Categorias</h1>
       <ul>
         {

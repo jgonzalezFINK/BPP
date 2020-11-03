@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
-import Botones from './Botones';
 const DetallePro = () =>{
 
     const {id} = useParams()
@@ -23,10 +22,9 @@ const DetallePro = () =>{
 
     return (
         <Fragment>
-           <Botones/>
-           console.log({producto})
             <h1>{producto.descripcion}</h1>
             <label>Subcategoria: {producto.subcategoria}</label>
+            <label>Fecha de registro: {producto.fecha_creado}</label>
         </Fragment>
     )
 }

@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect,useState} from 'react'
-import { Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import "../styles.css"
-import Botones from './Botones';
 
 const Lista = () =>{
     
@@ -24,22 +23,23 @@ const Lista = () =>{
 
     return(
         <Fragment>
-          <Botones/>
+          <div>
             <h1>Productos</h1>
-          <ul>
-            {
-             productos.map(item =>(
-              <li key={item.id} >
-                <Link to={`/Productos/${item.id}`}>
-                {item.descripcion}
-                </Link>
-              </li>
-            ))
-            }
-          </ul>
-         <button className="btn btn-primary" >Agregar producto</button>
-         
-
+              <ul>
+                {
+                productos.map(item =>(
+                  <li key={item.id} >
+                    <Link to={`/Productos/${item.id}`}>
+                    {item.descripcion}
+                    </Link>
+                  </li>
+                ))
+                }
+              </ul>
+          </div>    
+          <div>
+            <Link className="btn btn-primary" to="/Newproductos">Agregar Producto</Link>
+          </div>
         </Fragment>
     )
 
