@@ -1,12 +1,14 @@
 import React, { Fragment} from 'react'
+import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import {Link} from "react-router-dom";
 import "../styles.css"
+import Bienvenida from './Bienvenida';
 
 const Login = () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");  
-  
+    const [Bandera,setBandera]=useState(true)
     const onSubmit = (data, e) =>{
         var raw = JSON.stringify({"username":data.username,"password":data.password});
         var requestOptions = {
@@ -29,6 +31,7 @@ const Login = () => {
                 alert(miToken.error)
             }else{
                 localStorage.setItem("Token", JSON.stringify(miToken))
+                 setBandera(false) 
             }
         } catch (error) {
             console.log(error)
@@ -40,6 +43,8 @@ const Login = () => {
 
         return(
             <Fragment>
+                { !Bandera ? <Bienvenida/>
+                :<>
                 <h1>Login</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
@@ -73,7 +78,8 @@ const Login = () => {
                         </div>
                         <button className="btn btn-primary">lOGIN</button>
                     </form>
-             </Fragment>
+                 </> }
+                </Fragment>
             )
           
 }

@@ -1,7 +1,6 @@
 import React, { Fragment,} from 'react'
 import { useForm } from 'react-hook-form'
 import "../styles.css"
-import Botones from './Botones';
 const AddUsuario=()=>{
 
     var myHeaders = new Headers();
@@ -31,7 +30,6 @@ const AddUsuario=()=>{
     const {register, errors, handleSubmit} = useForm();
     return(
         <Fragment>
-             <Botones/>
              <h1> AddUsuario  </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
             <label>Username</label>

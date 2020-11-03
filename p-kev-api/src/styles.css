@@ -129,7 +129,18 @@ button {
   padding: 10px 20px;
   border-radius: 4px;
 }
-
-ul,li{
+ul, li, op {
   color: white;
+}
+
+.botones{
+  position: absolute;
+  top: 50%; /* Buscamos el centro horizontal (relativo) del navegador */
+  left: 45%; /* Buscamos el centro vertical (relativo) del navegador */
+  width: 650px; /* Definimos el ancho del objeto a centrar */
+  height: 400px; /* Definimos el alto del objeto a centrar */
+  margin-top: -90px; /* Restamos la mitad de la altura del objeto con un margin-top */
+  margin-left: -275px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+  justify-content: center;
+  align-items: center;
 }
