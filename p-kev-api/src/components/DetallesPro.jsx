@@ -24,6 +24,7 @@ const DetallePro = () =>{
     return (
         <Fragment>
            <Botones/>
+           console.log({producto})
             <h1>{producto.descripcion}</h1>
             <label>Subcategoria: {producto.subcategoria}</label>
         </Fragment>

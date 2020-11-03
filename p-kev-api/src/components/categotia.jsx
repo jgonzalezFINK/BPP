@@ -19,7 +19,7 @@ const LisCategotia = () => {
                 redirect: 'follow'
               };
   
-                const lista = await fetch("https://kevarman20.herokuapp.com/v1/categorias/", requestOptions)
+                const lista = await fetch("https://kevarman20.herokuapp.com/v2/categorias/", requestOptions)
                 const categorialist = await lista.json()
                 setCategoria(categorialist)
               
