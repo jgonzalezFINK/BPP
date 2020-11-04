@@ -1,7 +1,7 @@
 import React, { Fragment} from 'react'
 import {  useForm } from 'react-hook-form'
-
-
+import {Link} from 'react-router-dom'; 
+import "../styles.css"
 
 const NewProducto = () => {
 
@@ -35,8 +35,9 @@ const NewProducto = () => {
 
     return(
         <Fragment>
-         <h1> Agregar Producto  </h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
+         
+        <form className="Agregarproducto" onSubmit={handleSubmit(onSubmit)}>
+        <h1> Agregar Producto  </h1>
             <label>Descripcion:</label>
                 <input
                     name="descripcion"
@@ -69,8 +70,8 @@ const NewProducto = () => {
                     ref={ register({required:{value:true,message:'Password Requerido'}})}
                 />
             <p>{errors?.password?.message}</p>
-
-            <button className="btn btn-primary">Agregar</button>
+            <button className="btn btn-primary" >Agregar</button>
+            <Link to="/Bienvenida"><button className="btn btn-danger">Cancelar</button></Link>
         </form>
         </Fragment>
     );

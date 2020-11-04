@@ -8,6 +8,7 @@ import NewProducto from './components/NewProducto'
 import DetallesCategoria from './components/DetallesCategoria'
 import {BrowserRouter as Router,
   Route,Switch} from "react-router-dom";
+import Bienvenida from './components/Bienvenida'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     <Router>
       <Switch>  
       <Route path="/" exact><Login/></Route>
+      <Route path="/Bienvenida" exact><Bienvenida/></Route>
       <Route path="/Productos" exact><Lista/></Route>
       <Route path="/Productos/:id" exact><DetallesPro/></Route>
       <Route path="/Newproductos" exact><NewProducto/></Route>

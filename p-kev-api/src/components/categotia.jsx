@@ -32,18 +32,25 @@ const LisCategotia = () => {
 
     return (
         <Fragment>
+        <div className="ListaCategoria">
         <h1>Categorias</h1>
-      <ul>
-        {
-         categoria.map(item =>(
-          <li key={item.id} >
-            <Link to={`/Categoria/${item.id}`}>
-            {item.descripcion}
-            </Link>
-          </li>
-        ))
-        }
-      </ul>
+          <ul>
+            {
+            categoria.map(item =>(
+              <li key={item.id} >
+                <Link to={`/Categoria/${item.id}`}>
+                {item.descripcion}
+                </Link>
+              </li>
+            ))
+            }
+          </ul>
+          <div className="BtnBasic">
+            <Link to="/NewCategoria"><button className="btn btn-primary" >Agregar Categoria</button></Link>   
+            <Link to="/Bienvenida"><button className="btn btn-danger">Inicio</button></Link>
+          </div>  
+        </div>
+      
     </Fragment>
     );
 };

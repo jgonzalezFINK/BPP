@@ -1,7 +1,7 @@
 import React, { Fragment} from 'react'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import "../styles.css"
 import Bienvenida from './Bienvenida';
 
@@ -9,6 +9,7 @@ const Login = () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");  
     const [Bandera,setBandera]=useState(true)
+    
     const onSubmit = (data, e) =>{
         var raw = JSON.stringify({"username":data.username,"password":data.password});
         var requestOptions = {
@@ -43,12 +44,15 @@ const Login = () => {
 
         return(
             <Fragment>
-                { !Bandera ? <Bienvenida/>
+                { !Bandera ?
+                    <Redirect to="/Bienvenida"> <Bienvenida/> </Redirect>
+                
                 :<>
-                <h1>Login</h1>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                
+                    <form className="Login" onSubmit={handleSubmit(onSubmit)}>
+                        <h1>Login</h1>
                         <div>
-                        <label>Username</label>
+                        <label className="text-center">Username</label>
                         <input
                         name="username"
                         className="form-control my-2 "
@@ -61,7 +65,7 @@ const Login = () => {
                         <p>{errors?.username?.message}</p>
                         </div>
                         <div>
-                        <label>Password</label>
+                        <label className="text-center" >Password</label>
                         <input
                         name="password"
                         className="form-control my-2 "
@@ -73,7 +77,7 @@ const Login = () => {
                         />
                         <p>{errors?.password?.message}</p>
                         </div>
-                        <div>
+                        <div >
                         <Link to="/Usuario/AddUsuario" >Registrar Usuario</Link>
                         </div>
                         <button className="btn btn-primary">lOGIN</button>

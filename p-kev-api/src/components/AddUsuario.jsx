@@ -1,5 +1,6 @@
 import React, { Fragment,} from 'react'
 import { useForm } from 'react-hook-form'
+import {Link} from 'react-router-dom'; 
 import "../styles.css"
 const AddUsuario=()=>{
 
@@ -30,8 +31,9 @@ const AddUsuario=()=>{
     const {register, errors, handleSubmit} = useForm();
     return(
         <Fragment>
-             <h1> AddUsuario  </h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
+             
+    <form className="Agregarusuario" onSubmit={handleSubmit(onSubmit)}>
+        <h1> AddUsuario  </h1>
             <label>Username</label>
                 <input
                     name="username"
@@ -57,9 +59,9 @@ const AddUsuario=()=>{
                     ref={ register({required:{value:true,message:'Password Requerido'}})}
                 />
             <p>{errors?.password?.message}</p>
-
-            <button className="btn btn-primary">Add new user</button>
-        </form>
+            <button className="btn btn-primary" >Agregar</button>
+            <Link to="/Bienvenida"><button className="btn btn-danger">Cancelar</button></Link>
+            </form>
         </Fragment>
     );
     

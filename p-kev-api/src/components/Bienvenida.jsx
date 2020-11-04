@@ -7,8 +7,6 @@ const Bienvenida =()=>{
         <Fragment>
            <div className="botones">
             <h2>Bienvenido</h2>
-            <p> <strong> </strong> </p>
-
             <div className="card-deck">
                 <div className="card bg-primary">
                 <div className="card-body text-center">
