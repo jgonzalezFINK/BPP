@@ -5,7 +5,6 @@ import "../styles.css"
 const LisCategotia = () => {
 
     const[categoria,setCategoria]= useState([]) 
-    
     useEffect(()=>{
       const obtenerDatos = async () =>{
         try {
@@ -21,7 +20,7 @@ const LisCategotia = () => {
                 const lista = await fetch("https://kevarman20.herokuapp.com/v2/categorias/", requestOptions)
                 const categorialist = await lista.json()
                 setCategoria(categorialist)
-              
+
               } catch (error) {
                 console.log('Sin categorias')
               }

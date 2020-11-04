@@ -10,7 +10,7 @@ form {
   margin: 0 auto;
 }
 
-h1,h2,h3 {
+h1,h2,h3,h4,h5 {
   font-weight: 100;
   color: white;
   text-align: center;
@@ -157,6 +157,11 @@ ul, li, op {
   max-width: 600px;
 }
 
+.informacion{
+  padding: 50px 0;
+  margin: 0 auto;
+  max-width: 300px;
+}
 button{
   margin-left: 20px;
 }
