@@ -2,7 +2,7 @@ import React, { Fragment, useEffect,useState } from 'react'
 import {useParams} from 'react-router-dom'
 function DetallesCategoria() {
 
-    const id = useParams().id
+    const {id} = useParams()
     const[categoria,setcategoria]= useState([]) 
     
     useEffect(()=>{
@@ -25,12 +25,11 @@ function DetallesCategoria() {
             }
       } 
       obtenerDatos(id)
-    },[id])      
-
+    },[id])       
     return (
         <Fragment>
-            <h1>{categoria.id}</h1>
-            <label>{categoria.descripcion}</label>
+            <h1>Categoria: {categoria.id}</h1>
+            <label>Descripcion: {categoria.descripcion}</label>
         </Fragment>
     )
 }

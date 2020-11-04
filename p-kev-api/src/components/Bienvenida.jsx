@@ -15,7 +15,7 @@ const Bienvenida =()=>{
                 </div>
                 <div className="card bg-primary">
                 <div className="card-body text-center">
-                <Link className="btn btn-primary" to="/Categoria">CATEGORIAS</Link>
+                <Link className="btn btn-primary" to="/Categoria"> CATEGORIAS</Link>
                 </div>
                 </div>
                 <div className="card bg-primary">
