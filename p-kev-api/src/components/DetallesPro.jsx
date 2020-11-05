@@ -27,6 +27,7 @@ const DetallePro = () =>{
             <h1>{producto.descripcion}</h1>
             <label>Subcategoria: {producto.subcategoria}</label>
             <label>Fecha de registro: {producto.fecha_creado}</label>
+            <label>Cantidad de producto: {producto.cantidadProducto}</label>
             </div>
         </Fragment>
     )

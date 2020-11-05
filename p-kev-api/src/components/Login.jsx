@@ -2,6 +2,7 @@ import React, { Fragment} from 'react'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import {Link, Redirect} from "react-router-dom";
+
 import "../styles.css"
 import Bienvenida from './Bienvenida';
 
